@@ -1,0 +1,27 @@
+service: serverless-graphql-yoga
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+plugins:
+  - serverless-offline
+
+functions:
+  graphql:
+    handler: handler.server
+    events:
+      - http:
+          path: /
+          method: post
+          cors: true
+  playground:
+    handler: handler.playground
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+    

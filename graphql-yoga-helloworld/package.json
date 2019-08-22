@@ -1,0 +1,16 @@
+{
+    "name": "graphql-api-and-serverless",
+    "version": "1.0.0",
+    "description": "",
+    "main": "handler.js",
+    "scripts": {
+        "start": "serverless offline"
+    },
+    "dependencies": {
+        "graphql-yoga": "^1.17.4"
+    },
+    "devDependencies": {
+        "serverless-offline": "^5.10.1",
+        "serverless-pseudo-parameters": "^2.4.0"
+    }
+}

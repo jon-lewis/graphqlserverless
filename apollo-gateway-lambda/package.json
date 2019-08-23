@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "apollo-scripts start",
+    "start": "serverless offline",
     "deploy": "apollo-scripts deploy",
     "test": "apollo-scripts test"
   },

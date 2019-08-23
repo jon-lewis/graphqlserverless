@@ -4,11 +4,11 @@ import { formatError } from 'apollo-errors';
 
 const gateway = new ApolloGateway({
   serviceList: [
-    { name: 'accounts', url: 'https://pw678w138q.sse.codesandbox.io/graphql' },
-    { name: 'reviews', url: 'https://0yo165yq9v.sse.codesandbox.io/graphql' },
-    { name: 'products', url: 'https://x7jn4y20pp.sse.codesandbox.io/graphql' },
-    { name: 'inventory', url: 'https://o5oxqmn7j9.sse.codesandbox.io/graphql' },
-  ],
+    { name: "accounts", url: "http://localhost:4001/" },
+    { name: "reviews", url: "http://localhost:4002/" },
+    { name: "products", url: "http://localhost:4003/" },
+    { name: "inventory", url: "http://localhost:4004/" }
+  ]
 });
 
 const createHandler = async () => {

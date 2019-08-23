@@ -23,5 +23,5 @@ custom:
     webpackConfig: ./config/webpack.config.js
     includeModules: true
   serverless-offline:
-    port: ${env:APOLLO_SERVER_PORT}
+    port: 3001
       

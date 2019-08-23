@@ -1,0 +1,23 @@
+service: serverless-products-graphql
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+plugins:
+  - serverless-offline
+
+functions:
+  graphql:
+    handler: index.graphqlHandler
+    events:
+      - http:
+          path: /
+          method: any
+          cors: true
+
+custom:
+  serverless-offline:
+    port: 4003

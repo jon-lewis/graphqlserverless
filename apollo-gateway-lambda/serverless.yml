@@ -1,0 +1,27 @@
+service: user-gateway
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ${env:APOLLO_SERVER_AWS_REGION}
+  stage: dev
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-dotenv-plugin
+functions:
+  graphql:
+    handler: src/index.graphqlHandler
+    events:
+      - http:
+          path: "{proxy+}"
+          method: any
+          cors: true
+# serverless-webpack configuration
+# Enable auto-packing of external modules
+custom:
+  webpack:
+    webpackConfig: ./config/webpack.config.js
+    includeModules: true
+  serverless-offline:
+    port: ${env:APOLLO_SERVER_PORT}
+      

@@ -34,12 +34,34 @@ const typeDefs = gql`
     endCursor: String!
     hasNextPage: Boolean
   }
+
+  extend type Mutation {
+    addProduct(product: ProductInput!): Product
+  }
+
+  input ProductInput {
+    upc: String!
+    name: String
+    price: Float
+    weight: Int
+  }
 `;
 
 const resolvers = {
   Product: {
     __resolveReference(object) {
       return products.find(product => product.upc === object.upc);
+    }
+  },
+  Mutation: {
+    addProduct(_, args) {
+      // this error will never get hit because these are serverless functions so... memory will be wiped on each execution instance...
+      // but it's a good example of how to handle errors :)
+      if(products.includes(args.product)) {
+        return Error("Can't add the same item twice");
+      }
+      products.push(args.product);
+      return args.product;
     }
   },
   Query: {

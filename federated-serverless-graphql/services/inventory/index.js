@@ -7,15 +7,18 @@ const typeDefs = gql`
   extend type Product @key(fields: "upc") {
     upc: String! @external
     weight: Int @external
-    price: Int @external
+    price: Float @external
     inStock: Boolean
-    shippingEstimate: Int @requires(fields: "price weight")
+    shippingEstimate: Float @requires(fields: "price weight")
   }
 `;
 
 const resolvers = {
   Product: {
     __resolveReference(object) {
+      if(!inventory.find(product => product.upc === object.upc)) {
+        return Error("Item not found in inventory");
+      };
       return {
         ...object,
         ...inventory.find(product => product.upc === object.upc)
@@ -44,5 +47,6 @@ exports.graphqlHandler = server.createHandler();
 const inventory = [
   { upc: "1", inStock: true },
   { upc: "2", inStock: false },
-  { upc: "3", inStock: true }
+  { upc: "3", inStock: true },
+  { upc: "35423535-2345234523-45243-52345234-545", inStock: true }
 ];

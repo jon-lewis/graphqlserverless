@@ -3,21 +3,34 @@ service: serverless-accounts-graphql
 frameworkVersion: ">=1.1.0 <2.0.0"
 
 provider:
-  name: aws
-  runtime: nodejs8.10
+  name: google
+  stage: dev
+  runtime: nodejs8
+  region: us-central1
+  project: pizza-250520
+  credentials: C:\Users\lewisjd\.gcloud\keyfile.json
+
+# needs more granular excluding in production as only the serverless provider npm
+# package should be excluded (and not the whole node_modules directory)
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
 
 plugins:
+  - serverless-google-cloudfunctions
   - serverless-offline
 
 functions:
   graphql:
-    handler: index.graphqlHandler
+    handler: graphqlHandler
     events:
       - http:
           path: /
           method: any
-          cors: true
-
+          cors: true    
+                
 custom:
   serverless-offline:
     port: 4001

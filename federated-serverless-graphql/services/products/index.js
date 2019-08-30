@@ -73,7 +73,10 @@ const resolvers = {
       var start = products.findIndex(p => p.upc === atob(args.after || ''));
       // cursor was not found in the dataset
       if(start === -1) start = 0;
-      var nodes = products.slice(start, args.first);
+      else start++; // start at the item after this one
+      var end = start + args.first;
+      if(end > products.length) end = products.length;
+      var nodes = products.slice(start, end);
 
       // build edges
       var edges = [];

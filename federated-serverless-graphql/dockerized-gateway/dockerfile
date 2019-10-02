@@ -1,0 +1,10 @@
+FROM node:10
+EXPOSE 4000
+
+WORKDIR /apollo-gateway
+COPY * ./
+
+RUN npm install
+
+# Entrypoint when running the container
+CMD ["npm","run","prod"]

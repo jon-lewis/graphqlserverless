@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "@apollo/federation": "latest",
-    "apollo-server-lambda": "^2.8.2",
+    "apollo-server-lambda": "^2.14.2",
     "graphql": "latest",
     "serverless-offline": "^5.10.1"
   }

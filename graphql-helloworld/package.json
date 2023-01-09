@@ -5,7 +5,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "serverless-offline": "^5.8.0"
+    "serverless-offline": "^12.0.4"
   },
   "dependencies": {
     "graphql": "^14.4.2"

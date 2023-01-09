@@ -7,6 +7,6 @@
     "@apollo/federation": "latest",
     "apollo-server-lambda": "^2.8.2",
     "graphql": "latest",
-    "serverless-offline": "^5.10.1"
+    "serverless-offline": "^12.0.4"
   }
 }
